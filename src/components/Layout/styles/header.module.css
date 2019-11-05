@@ -1,0 +1,31 @@
+.header_link:hover {
+	border-bottom: 1px solid red;
+	margin-bottom: -1px;
+}
+
+.header_link {
+	padding: 5px;
+	margin: 5px;
+}
+
+.header {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+}
+
+.right_header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 50%;
+}
+
+.left_header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 50%;
+}
