@@ -1,13 +1,14 @@
 import React from 'react';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/Layout/layout';
+import Home from './home';
 import './styles/global.css';
 
-const Home = () => {
+const App = () => {
 	return (
-		<>
-			<Layout className={} />
-		</>
+		<Layout>
+			<Home />
+		</Layout>
 	);
 };
 
-export default Home;
+export default App;
