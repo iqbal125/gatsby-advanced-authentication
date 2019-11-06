@@ -3,9 +3,15 @@
 	margin-bottom: -1px;
 }
 
+.header_link_active {
+	border-bottom: 1px solid red;
+}
+
 .header_link {
 	padding: 5px;
 	margin: 5px;
+	text-decoration: none;
+	color: black;
 }
 
 .header {
