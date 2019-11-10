@@ -1,7 +1,12 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 const NotFound = () => {
-  return <div>Not Found</div>;
+  return (
+    <Layout>
+      <div>Not Found</div>
+    </Layout>
+  );
 };
 
 export default NotFound;
