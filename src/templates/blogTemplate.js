@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 
-const Template = ({ data }) => {
+const blogTemplate = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
 
@@ -22,7 +22,7 @@ const Template = ({ data }) => {
   );
 };
 
-export default Template;
+export default blogTemplate;
 
 export const pageQuery = graphql`
   query($path: String!) {
