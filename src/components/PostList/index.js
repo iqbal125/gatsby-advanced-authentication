@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import styles from './postlink.module.css';
 
-const PostLink = ({ post }) => {
+const PostList = ({ post }) => {
   return (
     <div>
-      <Link to={post.path}>
+      <Link className={styles.link} to={post.path}>
         {post.title} <small>{post.date}</small>
       </Link>
     </div>
   );
 };
 
-export default PostLink;
+export default PostList;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
-import PostLink from '../components/PostLink';
+import PostList from '../components/PostList';
 
 const Blog = ({ data }) => {
   const edges = data.allMarkdownRemark.edges;
@@ -11,7 +11,7 @@ const Blog = ({ data }) => {
       <div>
         {edges
           ? edges.map(edge => (
-              <PostLink key={edge.node.id} post={edge.node.frontmatter} />
+              <PostList key={edge.node.id} post={edge.node.frontmatter} />
             ))
           : null}
       </div>

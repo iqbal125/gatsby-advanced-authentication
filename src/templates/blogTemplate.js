@@ -1,37 +1,34 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
+import TagsList from '../components/TagsList';
 
-const blogTemplate = ({ data }) => {
-  const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
+const BlogTemplate = ({ data }) => {
+  const { frontmatter, html } = data.markdownRemark;
+  const { title, date, tags } = frontmatter;
 
   return (
     <Layout>
-      <div className='blog-post-container'>
-        <div className='blog-post'>
-          <h1>{frontmatter.title}</h1>
-          <h2>{frontmatter.date}</h2>
-          <div
-            className='blog-post-content'
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
-        </div>
+      <div>
+        <h1>{title}</h1>
+        <h2>{date}</h2>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <TagsList tags={tags} />
       </div>
     </Layout>
   );
 };
 
-export default blogTemplate;
+export default BlogTemplate;
 
 export const pageQuery = graphql`
   query($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
-        path
         date(formatString: "MMMM DD, YYYY")
         title
+        tags
       }
     }
   }
