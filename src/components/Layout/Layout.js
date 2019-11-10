@@ -4,13 +4,13 @@ import Header from './header';
 import styles from './styles/layout.module.css';
 
 const Layout = ({ children }) => {
-	return (
-		<div className={styles.layout}>
-			<Header />
-			<main>{children}</main>
-			<Footer />
-		</div>
-	);
+  return (
+    <div className={styles.layout}>
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </div>
+  );
 };
 
 export default Layout;
