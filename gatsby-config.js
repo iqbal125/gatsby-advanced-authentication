@@ -4,20 +4,20 @@ module.exports = {
     description: `A starter blog demonstrating what Gatsby can do.`
   },
   plugins: [
-     {
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
-        name: `blog`,
-      },
-     },
-     {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          path: `${__dirname}/blog`,
-          name: `blog`,
-        },
-     },
+        name: `blog`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/blog`,
+        name: `blog`
+      }
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -25,15 +25,15 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
-            },
+              maxWidth: 1200
+            }
           },
-          `gatsby-remark-copy-linked-files`,
-        ],
-      },
+          `gatsby-remark-copy-linked-files`
+        ]
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-react-helmet`,
-  ],
-}
+    `gatsby-plugin-react-helmet`
+  ]
+};
