@@ -1,16 +1,21 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styles from './postlink.module.css';
+import styles from './postlist.module.css';
 import Img from 'gatsby-image';
 
-const PostList = ({ post }) => {
+const PostList = ({ post, excerpt }) => {
   let featuredImg = post.featuredImage.childImageSharp.fluid;
 
   return (
-    <div>
+    <div className={styles.post_layout}>
       <Link className={styles.link} to={post.path}>
         <Img fluid={featuredImg} />
-        {post.title} <small>{post.date}</small>
+        <div className={styles.post_text}>
+          <h4>{post.title}</h4>
+          <div>By: {post.author}</div>
+          <small>{post.date}</small>
+          <p> {excerpt}</p>
+        </div>
       </Link>
     </div>
   );

@@ -9,17 +9,19 @@ const Tags = ({ data }) => {
 
   return (
     <Layout>
-      <h2> All Tags </h2>
       <div>
-        {tags.map(tag => {
-          return (
-            <div key={tag.fieldValue}>
-              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                {tag.fieldValue}
-              </Link>
-            </div>
-          );
-        })}
+        <h2> All Tags </h2>
+        <div>
+          {tags.map(tag => {
+            return (
+              <div key={tag.fieldValue}>
+                <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                  {tag.fieldValue}
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Layout>
   );

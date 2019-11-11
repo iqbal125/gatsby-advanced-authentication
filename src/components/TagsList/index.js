@@ -6,6 +6,7 @@ import styles from './tagslist.module.css';
 const TagsList = ({ tags }) => {
   return (
     <div>
+      tags:
       {tags.map(tag => {
         return (
           <Link

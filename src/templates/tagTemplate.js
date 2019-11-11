@@ -8,21 +8,23 @@ const TagTemplate = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <h2>
-        Posts Tagged: {tag} <small>({totalCount})</small>
-      </h2>
-      <h3>
-        <Link to='/tags'>All tags</Link>
-      </h3>
       <div>
-        {edges.map(({ node }) => {
-          const { title, path } = node.frontmatter;
-          return (
-            <div key={node.id}>
-              <Link to={path}>{title}</Link>
-            </div>
-          );
-        })}
+        <h2>
+          Posts Tagged: {tag} <small>({totalCount})</small>
+        </h2>
+        <h3>
+          <Link to='/tags'>All tags</Link>
+        </h3>
+        <div>
+          {edges.map(({ node }) => {
+            const { title, path } = node.frontmatter;
+            return (
+              <div key={node.id}>
+                <Link to={path}>{title}</Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Layout>
   );
