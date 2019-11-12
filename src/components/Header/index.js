@@ -35,9 +35,14 @@ const Header = () => {
         >
           Blog
         </Link>
-      </div>
-      <div className={styles.right_header}>
         <Search />
+        <Link
+          to='/login'
+          className={styles.header_link}
+          activeClassName={styles.header_link_active}
+        >
+          Login/Signup
+        </Link>
       </div>
     </header>
   );

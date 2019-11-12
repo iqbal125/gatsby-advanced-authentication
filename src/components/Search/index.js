@@ -1,9 +1,9 @@
 import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, SearchBox, connectHits } from 'react-instantsearch-dom';
+import { InstantSearch, connectHits } from 'react-instantsearch-dom';
 import SearchList from '../SearchList';
 import { connectSearchBox } from 'react-instantsearch/connectors';
-import styles from './styles/search.module.css';
+import styles from './search.module.css';
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
@@ -20,13 +20,26 @@ const Hits = connectHits(({ hits }) => (
   </div>
 ));
 
+const SearchBox = ({ currentRefinement, refine }) => (
+  <form noValidate action='' role='search'>
+    <input
+      type='search'
+      placeholder='Search...'
+      value={currentRefinement}
+      onChange={event => refine(event.currentTarget.value)}
+    />
+  </form>
+);
+
+const CustomSearchBox = connectSearchBox(SearchBox);
+
 const Search = () => {
   return (
     <InstantSearch
       indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
       searchClient={searchClient}
     >
-      <SearchBox searchAsYouType={true} submit={null} />
+      <CustomSearchBox />
       <Results />
     </InstantSearch>
   );

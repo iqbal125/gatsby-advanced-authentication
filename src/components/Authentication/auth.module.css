@@ -1,0 +1,20 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_input {
+  padding: 5px;
+  margin-bottom: 5px;
+  margin-top: 3px;
+}
+
+.form_button {
+  padding: 5px;
+}
+
+.error_text {
+  color: red;
+  font-size: 0.75rem;
+  margin-bottom: 2px;
+}
