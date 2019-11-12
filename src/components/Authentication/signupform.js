@@ -6,8 +6,8 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
 
 const config = {
-  apiKey: 'AIzaSyABrhAsT8e2cimHbPffpz-r2RkcgThSmR0',
-  authDomain: 'react-gatsby1.firebaseapp.com'
+  apiKey: process.env.FIREBASE_AUTH_DOMAIN,
+  authDomain: process.env.FIREBASE_CLIENT_ID
 };
 
 firebase.initializeApp(config);
