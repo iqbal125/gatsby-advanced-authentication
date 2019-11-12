@@ -26,7 +26,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 50%;
+  width: 33%;
 }
 
 .left_header {
@@ -34,5 +34,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 50%;
+  width: 33%;
+}
+
+.mid_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  width: 33%;
 }

@@ -1,6 +1,6 @@
 ---
 title: 'post 1'
-path: '/post1'
+path: '/posts/post1'
 date: '2019-05-04'
 author: 'Moe'
 tags: ['post1', 'blue']

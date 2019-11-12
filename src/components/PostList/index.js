@@ -8,7 +8,7 @@ const PostList = ({ post, excerpt }) => {
 
   return (
     <div className={styles.post_layout}>
-      <Link className={styles.link} to={post.path}>
+      <Link className={styles.link} to={`${post.path}`}>
         <Img fluid={featuredImg} />
         <div className={styles.post_text}>
           <h4>{post.title}</h4>

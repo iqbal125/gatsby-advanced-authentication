@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './header.module.css';
 import img from '../../../static/favicon.ico';
 import { Link } from 'gatsby';
+import Search from '../Search';
 
 const Header = () => {
   return (
@@ -12,7 +13,7 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className={styles.right_header}>
+      <div className={styles.mid_header}>
         <Link
           to='/about'
           className={styles.header_link}
@@ -34,6 +35,9 @@ const Header = () => {
         >
           Blog
         </Link>
+      </div>
+      <div className={styles.right_header}>
+        <Search />
       </div>
     </header>
   );
