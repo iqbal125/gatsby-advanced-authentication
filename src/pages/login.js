@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import SignUpForm from '../components/Authentication/signupform';
+import Auth from '../components/Authentication/auth';
 
 const Login = () => {
   return (
     <Layout>
       <div>
-        <SignUpForm />
+        <Auth />
       </div>
     </Layout>
   );
