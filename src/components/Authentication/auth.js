@@ -45,7 +45,7 @@ const Auth = () => {
     if (res.data.token) {
       setLoading(false);
       console.log(jwt_decode(res.data.token));
-      context.saveUser1(jwt_decode(res.data.token));
+      context.saveUser(jwt_decode(res.data.token));
       //redirect to profile page
     }
     if (!res.data.token) {
