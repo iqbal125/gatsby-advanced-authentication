@@ -1,13 +1,33 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import AuthContext from '../../utils/context';
 import { authReducer, initialState } from '../../store/reducers/auth_reducer';
-import { saveUserAction } from '../../store/actions/actions';
+import { saveUserAction, Logout } from '../../store/actions/actions';
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  const saveUserFunc = user => {
+  const silentAuth = () => {
+    let user = JSON.parse(localStorage.getItem('user'));
+    let expiresAt = JSON.parse(localStorage.getItem('expiresIn'));
+
+    if (user && new Date().getTime() < expiresAt) {
+      dispatch(saveUserAction(user));
+    } else if (!user && new Date().getTime() < expiresAt) {
+      dispatch(LogOut);
+    }
+  };
+
+  useEffect(() => {
+    silentAuth();
+  }, []);
+
+  //logs in user and saves to global store
+  const saveUser = user => {
     dispatch(saveUserAction(user));
+  };
+
+  const LogOut = () => {
+    dispatch(Logout);
   };
 
   return (
@@ -15,7 +35,8 @@ const AuthProvider = ({ children }) => {
       <AuthContext.Provider
         value={{
           state,
-          saveUser: user => saveUserFunc(user)
+          saveUser,
+          LogOut
         }}
       >
         {children}

@@ -1,14 +1,13 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import Home from './home';
-import './styles/global.css';
+import Routes from '../components/Routes';
 
-const Index = () => {
+const App = () => {
   return (
     <Layout>
-      <Home />
+      <Routes />
     </Layout>
   );
 };
 
-export default Index;
+export default App;

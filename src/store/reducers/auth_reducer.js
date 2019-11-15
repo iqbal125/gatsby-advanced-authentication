@@ -9,11 +9,11 @@ export const authReducer = (state, action) => {
   switch (action.type) {
     case LOGIN:
       let user = action.payload;
-      let expiresIn = 1000 * new Date().getTime();
+      let expiresIn = user.exp * 1000 + new Date().getTime();
       console.log(user);
 
       localStorage.setItem('expiresIn', JSON.stringify(expiresIn));
-      localStorage.setItem('user', user);
+      localStorage.setItem('user', JSON.stringify(user));
 
       return { isAuthenticated: true, user: user };
     case LOGOUT:

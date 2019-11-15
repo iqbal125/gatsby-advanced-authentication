@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../../utils/context';
 
 const Profile = () => {
-  return <div></div>;
+  const { state } = useContext(AuthContext);
+
+  return (
+    <div>
+      <h1>Welcome: {state.user.username} </h1>
+    </div>
+  );
 };
 
 export default Profile;

@@ -3,6 +3,7 @@ import styles from './auth.module.css';
 import axios from 'axios';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
+import { navigate } from 'gatsby';
 import LoginForm from './forms/loginform';
 import SignUpForm from './forms/signupform';
 import jwt_decode from 'jwt-decode';
@@ -43,10 +44,8 @@ const Auth = () => {
 
   const handleAuthres = res => {
     if (res.data.token) {
-      setLoading(false);
-      console.log(jwt_decode(res.data.token));
       context.saveUser(jwt_decode(res.data.token));
-      //redirect to profile page
+      navigate('/app/profile');
     }
     if (!res.data.token) {
       setresMessage('Signup Failed Please Try Again');
@@ -60,6 +59,7 @@ const Auth = () => {
   };
 
   const sendProfiletoDB = data => {
+    setLoading(true);
     axios
       .post('http://localhost:3000/autho2signup', data)
       .then(res => handleAuthres(res))
