@@ -10,7 +10,7 @@ import jwt_decode from 'jwt-decode';
 import AuthContext from '../../utils/context';
 
 const config = {
-  apiKey: 'AIzaSyABrhAsT8e2cimHbPffpz-r2RkcgThSmR0',
+  apiKey: '',
   authDomain: 'react-gatsby1.firebaseapp.com'
 };
 
