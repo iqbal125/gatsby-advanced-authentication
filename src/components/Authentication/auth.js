@@ -11,8 +11,8 @@ import AuthContext from '../../utils/context';
 import PasswordForgot from './forms/password_forgot';
 
 const config = {
-  apiKey: 'AIzaSyABrhAsT8e2cimHbPffpz-r2RkcgThSmR0',
-  authDomain: 'react-gatsby1.firebaseapp.com'
+  apiKey: process.env.GATSBY_FIREBASE_API_KEY,
+  authDomain: process.env.GATSBY_FIREBASE_AUTH_DOMAIN
 };
 
 firebase.initializeApp(config);
