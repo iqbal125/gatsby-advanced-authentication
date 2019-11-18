@@ -20,6 +20,7 @@ const Auth = () => {
   const [loading, setLoading] = useState(false);
   const [resMessage, setresMessage] = useState(null);
   const [isSignIn, setSignIn] = useState(true);
+  const [forgot, setForgot] = useState(false);
   const context = useContext(AuthContext);
 
   const uiConfig = {
@@ -127,13 +128,14 @@ const Auth = () => {
         </>
       )}
       <h3>{resMessage}</h3>
+      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
       {isSignIn ? <LoginForm /> : <SignUpForm />}
       {isSignIn ? (
         <button onClick={() => setSignIn(false)}>SignUp</button>
       ) : (
         <button onClick={() => setSignIn(true)}>Login</button>
       )}
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      {}
     </div>
   );
 };
