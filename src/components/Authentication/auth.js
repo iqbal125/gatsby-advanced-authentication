@@ -8,9 +8,10 @@ import LoginForm from './forms/loginform';
 import SignUpForm from './forms/signupform';
 import jwt_decode from 'jwt-decode';
 import AuthContext from '../../utils/context';
+import PasswordForgot from './forms/password_forgot';
 
 const config = {
-  apiKey: '',
+  apiKey: 'AIzaSyABrhAsT8e2cimHbPffpz-r2RkcgThSmR0',
   authDomain: 'react-gatsby1.firebaseapp.com'
 };
 
@@ -120,7 +121,7 @@ const Auth = () => {
   };
 
   return (
-    <div>
+    <div className={styles.form_container}>
       {loading && (
         <>
           <div className={styles.loader}></div>
@@ -129,13 +130,35 @@ const Auth = () => {
       )}
       <h3>{resMessage}</h3>
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-      {isSignIn ? <LoginForm /> : <SignUpForm />}
-      {isSignIn ? (
-        <button onClick={() => setSignIn(false)}>SignUp</button>
-      ) : (
-        <button onClick={() => setSignIn(true)}>Login</button>
+      {isSignIn && !forgot && (
+        <>
+          <LoginForm />
+          <div>
+            Dont have an Account? &nbsp;
+            <button onClick={() => setSignIn(false)}>SignUp</button>
+          </div>
+          <small onClick={() => setForgot(true)} className={styles.forgot_password}>
+            Forgot Password?
+          </small>
+        </>
       )}
-      {}
+      {!isSignIn && !forgot && (
+        <>
+          <SignUpForm />
+          Already have an Account? &nbsp;
+          <div>
+            <button onClick={() => setSignIn(true)}>Login</button>
+          </div>
+        </>
+      )}
+      {forgot && (
+        <>
+          <PasswordForgot />
+          <small onClick={() => setForgot(false)} className={styles.forgot_password}>
+            Back to login
+          </small>
+        </>
+      )}
     </div>
   );
 };
