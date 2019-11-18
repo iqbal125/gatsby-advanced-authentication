@@ -145,8 +145,8 @@ const Auth = () => {
       {!isSignIn && !forgot && (
         <>
           <SignUpForm />
-          Already have an Account? &nbsp;
           <div>
+            Already have an Account? &nbsp;
             <button onClick={() => setSignIn(true)}>Login</button>
           </div>
         </>

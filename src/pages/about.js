@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Layout from '../components/Layout';
 import AuthContext from '../utils/context';
-import { navigate } from 'gatsby';
+
 import Routes from '../components/Routes';
 
 const About = () => {

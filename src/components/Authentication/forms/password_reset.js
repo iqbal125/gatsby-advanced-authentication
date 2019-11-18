@@ -2,77 +2,95 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import styles from './authform.module.css';
 import axios from 'axios';
+import * as Yup from 'yup';
 
-const PasswordReset = () => {
-  const [loading, setLoading] = useState(false);
+const SignupSchema = Yup.object().shape({
+  passwordreset: Yup.string()
+    .min(8, 'Password Must be 8 characters')
+    .required('Required'),
+  passwordconfirm: Yup.string().oneOf([Yup.ref('passwordreset')], 'Passwords do not match')
+});
+
+const PasswordReset = props => {
   const [resMessage, setresMessage] = useState(null);
 
   const handleSubmit = values => {
-    setLoading(true);
-
-    let email = values.emaillogin;
-    let password = values.password.login;
+    let email = values.emailreset;
+    let password = values.passwordreset;
+    let token = props.location.pathname.substring(19);
 
     let data = {
       email,
-      password
+      password,
+      token
     };
 
     let handleAuthRes = res => {
-      console.log(res);
-      if (res.data.token) {
-        //login success
-        //redirect to profile page
-      }
-      if (res.data.message) {
-        setLoading(false);
-        setresMessage(res.data.message);
+      if (res.data) {
+        setresMessage(res.data);
+      } else {
+        setresMessage('Reset Failed Please Try again');
       }
     };
 
     let handleAuthErr = err => {
       console.log(err);
-      setLoading(false);
-      setresMessage('Login Failed Please Try Again');
+      setresMessage('Reset Failed Please Try again');
     };
 
     axios
-      .post('http://localhost:3000/login', data)
+      .post('http://localhost:3000/password_reset', data)
       .then(res => handleAuthRes(res))
       .catch(err => handleAuthErr(err));
   };
 
   return (
     <div>
-      {loading && (
-        <>
-          <div className={styles.loader}></div>
-          <div className={styles.loading_background}></div>
-        </>
-      )}
-      <h3>{resMessage}</h3>
-      <Formik initialValues={{ email: '', password: '' }} onSubmit={handleSubmit}>
-        {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+      <h3> Resetting Password: </h3>
+      <h4>{resMessage}</h4>
+      <Formik
+        initialValues={{ emailreset: '', passwordreset: '', passwordconfirm: '' }}
+        validationSchema={SignupSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <label htmlFor='emaillogin'>username or email:</label>
+            <label htmlFor='emailreset'>email:</label>
             <input
               className={styles.form_input}
-              name='emaillogin'
-              id='emaillogin'
+              type='email'
+              name='emailreset'
+              id='emailreset'
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.email}
+              value={values.emailreset}
             />
-            <label htmlFor='passwordlogin'>password:</label>
+            <label htmlFor='passwordreset'>new password:</label>
             <input
               className={styles.form_input}
-              type='passwordlogin'
-              name='passwordlogin'
-              id='passwordlogin'
+              type='password'
+              name='passwordreset'
+              id='passwordreset'
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.password}
+              value={values.passwordreset}
             />
+            {errors.passwordreset && touched.passwordreset && (
+              <span className={styles.error_text}>{errors.passwordreset}</span>
+            )}
+            <label htmlFor='passwordconfirm'>confirm password:</label>
+            <input
+              className={styles.form_input}
+              type='password'
+              name='passwordconfirm'
+              id='passwordconfirm'
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.passwordconfirm}
+            />
+            {errors.passwordconfirm && touched.passwordconfirm && (
+              <span className={styles.error_text}>{errors.passwordconfirm}</span>
+            )}
             <button type='submit' className={styles.form_button} disabled={isSubmitting}>
               Submit
             </button>

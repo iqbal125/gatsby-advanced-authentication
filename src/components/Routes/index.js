@@ -3,6 +3,7 @@ import { Router } from '@reach/router';
 import { navigate } from 'gatsby';
 import Profile from '../Profile';
 import AuthContext from '../../utils/context';
+import PasswordReset from '../Authentication/forms/password_reset';
 
 const Routes = () => {
   const context = useContext(AuthContext);
@@ -28,6 +29,7 @@ const Routes = () => {
   return (
     <Router>
       <PrivateRoute path='/app/profile' component={Profile} />
+      <PasswordReset path='/app/passwordreset/:token' />
     </Router>
   );
 };

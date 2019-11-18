@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Formik } from 'formik';
 import styles from './authform.module.css';
 import axios from 'axios';
 import * as Yup from 'yup';
+import jwt_decode from 'jwt-decode';
+import AuthContext from '../../../utils/context';
+import { navigate } from 'gatsby';
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
@@ -20,6 +23,7 @@ const SignupSchema = Yup.object().shape({
 const SignUpForm = () => {
   const [loading, setLoading] = useState(false);
   const [resMessage, setresMessage] = useState(null);
+  const context = useContext(AuthContext);
 
   const handleSubmit = values => {
     setLoading(true);
@@ -36,8 +40,8 @@ const SignUpForm = () => {
 
     let handleAuthRes = res => {
       if (res.data.token) {
-        //login success
-        //redirect to profile page
+        context.saveUser(jwt_decode(res.data.token));
+        navigate('/app/profile');
       }
       if (!res.data.token) {
         setLoading(false);

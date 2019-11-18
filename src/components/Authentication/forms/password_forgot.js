@@ -4,8 +4,8 @@ import styles from './authform.module.css';
 import axios from 'axios';
 
 const PasswordForgot = () => {
-  const [errorText, setError] = useState(false);
-  const [resText, setRes] = useState(false);
+  const [resMessage, setresMessage] = useState(null);
+  const [successRes, setsuccessRes] = useState(false);
 
   const handleSubmit = values => {
     let email = values.emailforgot;
@@ -14,26 +14,32 @@ const PasswordForgot = () => {
       email
     };
 
-    let handleRes = res => {
-      // For Security Purposes dont display "Email not Found" response text
-      if (res.statusText == 'OK') {
-        setRes(true);
+    let handleAuthRes = res => {
+      if (res.data) {
+        setresMessage(res.data);
+        if (res.data === 'Successfully Sent Password reset') {
+          setsuccessRes(true);
+        }
       } else {
-        setError(true);
+        setresMessage('Request Failed Please Try again');
       }
+    };
+
+    let handleAuthErr = err => {
+      console.log(err);
+      setresMessage('Request Failed Please Try again');
     };
 
     axios
       .post('http://localhost:3000/forgot', data)
-      .then(res => handleRes(res))
-      .catch(err => console.log(err));
+      .then(res => handleAuthRes(res))
+      .catch(err => handleAuthErr(err));
   };
 
   return (
     <div>
-      {errorText && <p>There was a problem with your request, please try again later</p>}
-      {resText && <p>Email was successfully sent</p>}
-      {!resText && !errorText && (
+      <h3>{resMessage}</h3>
+      {!successRes && (
         <>
           <h3> Forgot Password </h3>
           <Formik initialValues={{ emailforgot: '' }} onSubmit={handleSubmit}>
