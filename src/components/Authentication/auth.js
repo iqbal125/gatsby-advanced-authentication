@@ -129,7 +129,7 @@ const Auth = () => {
         </>
       )}
       <h3>{resMessage}</h3>
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      {!forgot && <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />}
       {isSignIn && !forgot && (
         <>
           <LoginForm />

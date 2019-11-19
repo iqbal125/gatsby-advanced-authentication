@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Formik } from 'formik';
 import styles from './authform.module.css';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
+import AuthContext from '../../../utils/context';
+import { navigate } from 'gatsby';
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const [resMessage, setresMessage] = useState(null);
+  const context = useContext(AuthContext);
 
   const handleSubmit = values => {
     setLoading(true);
 
     let email = values.emaillogin;
-    let password = values.password.login;
+    let password = values.passwordlogin;
 
     let data = {
       email,
@@ -21,8 +25,8 @@ const LoginForm = () => {
     let handleAuthRes = res => {
       console.log(res);
       if (res.data.token) {
-        //login success
-        //redirect to profile page
+        context.saveUser(jwt_decode(res.data.token));
+        navigate('/app/profile');
       }
       if (res.data.message) {
         setLoading(false);
@@ -51,27 +55,28 @@ const LoginForm = () => {
         </>
       )}
       <h3>{resMessage}</h3>
-      <Formik initialValues={{ email: '', password: '' }} onSubmit={handleSubmit}>
+      <Formik initialValues={{ emaillogin: '', passwordlogin: '' }} onSubmit={handleSubmit}>
         {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <label htmlFor='emaillogin'>username or email:</label>
             <input
               className={styles.form_input}
+              type='email'
               name='emaillogin'
               id='emaillogin'
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.email}
+              value={values.emaillogin}
             />
             <label htmlFor='passwordlogin'>password:</label>
             <input
               className={styles.form_input}
-              type='passwordlogin'
+              type='password'
               name='passwordlogin'
               id='passwordlogin'
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.password}
+              value={values.passwordlogin}
             />
             <button type='submit' className={styles.form_button} disabled={isSubmitting}>
               Submit
