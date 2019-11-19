@@ -3,7 +3,7 @@ import styles from './header.module.css';
 import img from '../../../static/favicon.ico';
 import { Link } from 'gatsby';
 import Search from '../Search';
-import AuthContext from '../../utils/context';
+import AuthContext from '../../utils/auth_context';
 import { navigate } from 'gatsby';
 
 const Header = () => {

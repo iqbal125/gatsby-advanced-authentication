@@ -2,20 +2,12 @@ import React, { useState, useContext } from 'react';
 import styles from './auth.module.css';
 import axios from 'axios';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from 'firebase';
 import { navigate } from 'gatsby';
 import LoginForm from './forms/loginform';
 import SignUpForm from './forms/signupform';
 import jwt_decode from 'jwt-decode';
-import AuthContext from '../../utils/context';
+import AuthContext from '../../utils/auth_context';
 import PasswordForgot from './forms/password_forgot';
-
-const config = {
-  apiKey: process.env.GATSBY_FIREBASE_API_KEY,
-  authDomain: process.env.GATSBY_FIREBASE_AUTH_DOMAIN
-};
-
-firebase.initializeApp(config);
 
 const Auth = () => {
   const [loading, setLoading] = useState(false);
@@ -27,9 +19,9 @@ const Auth = () => {
   const uiConfig = {
     signInFlow: 'popup',
     signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.GithubAuthProvider.PROVIDER_ID,
-      firebase.auth.FacebookAuthProvider.PROVIDER_ID
+      context.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      context.firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      context.firebase.auth.FacebookAuthProvider.PROVIDER_ID
     ],
     callbacks: {
       signInSuccessWithAuthResult: function(authResult) {
@@ -129,7 +121,7 @@ const Auth = () => {
         </>
       )}
       <h3>{resMessage}</h3>
-      {!forgot && <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />}
+      {!forgot && <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={context.firebase.auth()} />}
       {isSignIn && !forgot && (
         <>
           <LoginForm />

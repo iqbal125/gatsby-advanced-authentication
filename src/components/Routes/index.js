@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Router } from '@reach/router';
 import { navigate } from 'gatsby';
 import Profile from '../Profile';
-import AuthContext from '../../utils/context';
+import AuthContext from '../../utils/auth_context';
 import PasswordReset from '../Authentication/forms/password_reset';
 
 const Routes = () => {

@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import styles from './authform.module.css';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-import AuthContext from '../../../utils/context';
+import AuthContext from '../../../utils/auth_context';
 import { navigate } from 'gatsby';
 
 const LoginForm = () => {
