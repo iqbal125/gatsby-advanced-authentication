@@ -7,8 +7,7 @@ const SearchList = ({ hit }) => {
 
   return (
     <div className={styles.search_layout}>
-      {console.log(hit)}
-      <Link className={styles.link} to={`/posts/${hit.path}`}>
+      <Link className={styles.link} to={`/${hit.path}`}>
         <div className={styles.post_text}>
           <h4>{hit.title}</h4>
           <div>By: {hit.author}</div>
