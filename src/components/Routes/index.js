@@ -4,6 +4,7 @@ import { navigate } from 'gatsby';
 import Profile from '../Profile';
 import AuthContext from '../../utils/auth_context';
 import PasswordReset from '../Authentication/forms/password_reset';
+import Auth from '../Authentication/auth';
 
 const Routes = () => {
   const context = useContext(AuthContext);
@@ -20,7 +21,7 @@ const Routes = () => {
 
     if (!isAuthenticated && isTokenValid()) {
       context.LogOut();
-      navigate('/login');
+      navigate('/app/login');
       return null;
     }
     return <Component {...rest} />;
@@ -28,8 +29,9 @@ const Routes = () => {
 
   return (
     <Router>
-      <PrivateRoute path='/app/profile' component={Profile} />
-      <PasswordReset path='/app/passwordreset/:token' />
+      <PrivateRoute path="/app/profile" component={Profile} />
+      <PasswordReset path="/app/passwordreset/:token" />
+      <Auth path="/app/login" />
     </Router>
   );
 };

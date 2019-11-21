@@ -8,7 +8,7 @@ const Blog = ({ data }) => {
   const edges = data.allMarkdownRemark.edges;
 
   return (
-    <Layout>
+    <Layout title='Blog' description='All the posts'>
       <div className={styles.blog_layout}>
         {edges
           ? edges.map(edge => (

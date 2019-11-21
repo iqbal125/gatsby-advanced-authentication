@@ -28,6 +28,9 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     silentAuth();
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config);
+    }
   }, []); // eslint-disable-line
 
   //logs in user and saves to global store

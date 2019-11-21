@@ -21,27 +21,27 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.left_header}>
-        <Link to='/'>
-          <img src={img} alt='' />
+        <Link to="/">
+          <img src={img} alt="" />
         </Link>
       </div>
 
       <div className={styles.mid_header}>
         <Link
-          to='/about'
+          to="/about"
           className={styles.header_link}
           activeClassName={styles.header_link_active}
         >
           About
         </Link>
         <Link
-          to='/contact'
+          to="/contact"
           className={styles.header_link}
           activeClassName={styles.header_link_active}
         >
           Contact
         </Link>
-        <Link to='/blog' className={styles.header_link} activeClassName={styles.header_link_active}>
+        <Link to="/blog" className={styles.header_link} activeClassName={styles.header_link_active}>
           Blog
         </Link>
       </div>
@@ -52,7 +52,7 @@ const Header = () => {
         </div>
         {!context.state.isAuthenticated && (
           <Link
-            to='/login'
+            to="/app/login"
             className={styles.login_button}
             activeClassName={styles.login_button_active}
           >
@@ -61,7 +61,7 @@ const Header = () => {
         )}
         {context.state.isAuthenticated && (
           <div className={styles.drop_down_wrapper}>
-            <i onClick={menuHandler} className='material-icons'>
+            <i onClick={menuHandler} className="material-icons">
               account_circle
             </i>
             {/* <button>Button1</button> */}

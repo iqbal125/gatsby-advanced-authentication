@@ -3,8 +3,10 @@ const queries = require('./src/utils/algolia');
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    description: `A starter blog demonstrating what Gatsby can do.`
+    defaultTitle: `Gatsby Startup/Hackathon Starter`,
+    defaultDescription: `A starter for building a startup or hackathon project`,
+    siteUrl: 'https://www.yoursite.com',
+    defaultImage: './static/favicon.ico'
   },
   plugins: [
     {
@@ -49,6 +51,7 @@ module.exports = {
       }
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`
   ]
