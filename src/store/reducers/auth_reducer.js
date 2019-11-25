@@ -21,6 +21,6 @@ export const authReducer = (state, action) => {
       localStorage.removeItem('user');
       return { ...state, isAuthenticated: false, user: null };
     default:
-      break;
+      return state;
   }
 };

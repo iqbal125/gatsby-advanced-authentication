@@ -53,6 +53,8 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-react-helmet`
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-netlify-cms`,
+    'gatsby-plugin-netlify-identity-widget'
   ]
 };
