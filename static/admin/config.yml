@@ -13,4 +13,5 @@ collections:
       - { name: author, label: Author }
       - { name: path, label: Path }
       - { name: date, label: Date, widget: datetime }
+      - { name: imageFeature, label: Featured Image, widget: image }
       - { name: body, label: Body, widget: markdown }

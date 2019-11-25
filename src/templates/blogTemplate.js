@@ -4,9 +4,12 @@ import Layout from '../components/Layout';
 import TagsList from '../components/TagsList';
 import styles from './styles/blogTemplate.module.css';
 import SEO from '../components/SEO';
+import { Disqus } from 'gatsby-plugin-disqus';
 
 const BlogTemplate = ({ data }) => {
-  const { frontmatter, html, excerpt } = data.markdownRemark;
+  const { siteMetadata } = data.site;
+  const { siteUrl } = siteMetadata;
+  const { frontmatter, html, excerpt, id } = data.markdownRemark;
   const { title, date, author, tags, path } = frontmatter;
   const image = frontmatter.featuredImage.childImageSharp.fluid;
 
@@ -16,6 +19,12 @@ const BlogTemplate = ({ data }) => {
     image,
     article: true,
     pathname: path
+  };
+
+  const disqusConfig = {
+    url: `${siteUrl + path}`,
+    identifier: id,
+    title: title
   };
 
   return (
@@ -29,6 +38,7 @@ const BlogTemplate = ({ data }) => {
           </h2>
           <div dangerouslySetInnerHTML={{ __html: html }} />
           <TagsList tags={tags} />
+          <Disqus config={disqusConfig} />
         </div>
       </Layout>
     </>
@@ -39,9 +49,15 @@ export default BlogTemplate;
 
 export const pageQuery = graphql`
   query($path: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       excerpt(pruneLength: 160)
+      id
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

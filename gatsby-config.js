@@ -5,7 +5,7 @@ module.exports = {
   siteMetadata: {
     defaultTitle: `Gatsby Startup/Hackathon Starter`,
     defaultDescription: `A starter for building a startup or hackathon project`,
-    siteUrl: 'https://www.yoursite.com',
+    siteUrl: `https://nervous-wescoff-365dda.netlify.com`,
     defaultImage: './static/favicon.ico'
   },
   plugins: [
@@ -48,6 +48,12 @@ module.exports = {
           },
           `gatsby-remark-copy-linked-files`
         ]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `disqus_7kFRCjWL2K`
       }
     },
     `gatsby-transformer-sharp`,
