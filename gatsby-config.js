@@ -53,7 +53,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: `https-nervous-wescoff-365dda-netlify-com`
+        shortname: process.env.GATSBY_DISQUS_SHORTNAME
       }
     },
     `gatsby-transformer-sharp`,
