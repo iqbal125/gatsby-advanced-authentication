@@ -38,6 +38,8 @@ const BlogTemplate = ({ data }) => {
           </h2>
           <div dangerouslySetInnerHTML={{ __html: html }} />
           <TagsList tags={tags} />
+          <br />
+          <br />
           <Disqus config={disqusConfig} />
         </div>
       </Layout>
