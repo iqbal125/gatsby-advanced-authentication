@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import styles from './authform.module.css';
 import axios from 'axios';
 import * as Yup from 'yup';
+import { navigate } from 'gatsby';
 
 const SignupSchema = Yup.object().shape({
   passwordreset: Yup.string()
@@ -28,6 +29,7 @@ const PasswordReset = props => {
     let handleAuthRes = res => {
       if (res.data) {
         setresMessage(res.data);
+        setTimeout(() => navigate('/app/login'), 400);
       } else {
         setresMessage('Reset Failed Please Try again');
       }
@@ -55,22 +57,22 @@ const PasswordReset = props => {
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <label htmlFor='emailreset'>email:</label>
+            <label htmlFor="emailreset">email:</label>
             <input
               className={styles.form_input}
-              type='email'
-              name='emailreset'
-              id='emailreset'
+              type="email"
+              name="emailreset"
+              id="emailreset"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.emailreset}
             />
-            <label htmlFor='passwordreset'>new password:</label>
+            <label htmlFor="passwordreset">new password:</label>
             <input
               className={styles.form_input}
-              type='password'
-              name='passwordreset'
-              id='passwordreset'
+              type="password"
+              name="passwordreset"
+              id="passwordreset"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.passwordreset}
@@ -78,12 +80,12 @@ const PasswordReset = props => {
             {errors.passwordreset && touched.passwordreset && (
               <span className={styles.error_text}>{errors.passwordreset}</span>
             )}
-            <label htmlFor='passwordconfirm'>confirm password:</label>
+            <label htmlFor="passwordconfirm">confirm password:</label>
             <input
               className={styles.form_input}
-              type='password'
-              name='passwordconfirm'
-              id='passwordconfirm'
+              type="password"
+              name="passwordconfirm"
+              id="passwordconfirm"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.passwordconfirm}
@@ -91,7 +93,7 @@ const PasswordReset = props => {
             {errors.passwordconfirm && touched.passwordconfirm && (
               <span className={styles.error_text}>{errors.passwordconfirm}</span>
             )}
-            <button type='submit' className={styles.form_button} disabled={isSubmitting}>
+            <button type="submit" className={styles.form_button} disabled={isSubmitting}>
               Submit
             </button>
           </form>

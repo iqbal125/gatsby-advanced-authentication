@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import styles from './authform.module.css';
 import axios from 'axios';
+import { navigate } from 'gatsby';
 
 const PasswordForgot = () => {
   const [resMessage, setresMessage] = useState(null);
@@ -16,9 +17,13 @@ const PasswordForgot = () => {
 
     let handleAuthRes = res => {
       if (res.data) {
-        setresMessage(res.data);
-        if (res.data === 'Successfully Sent Password reset') {
+        console.log(res.data);
+        if (res.data !== 'Email Not Found') {
           setsuccessRes(true);
+          console.log(res.data);
+          navigate('/app/passwordreset/' + res.data);
+        } else if (res.data === 'Email Not Found') {
+          setresMessage('Email Not Found');
         }
       } else {
         setresMessage('Request Failed Please Try again');
@@ -45,16 +50,16 @@ const PasswordForgot = () => {
           <Formik initialValues={{ emailforgot: '' }} onSubmit={handleSubmit}>
             {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
-                <label htmlFor='emailforgot'>email:</label>
+                <label htmlFor="emailforgot">email:</label>
                 <input
                   className={styles.form_input}
-                  name='emailforgot'
-                  id='emailforgot'
+                  name="emailforgot"
+                  id="emailforgot"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.emailforgot}
                 />
-                <button type='submit' className={styles.form_button} disabled={isSubmitting}>
+                <button type="submit" className={styles.form_button} disabled={isSubmitting}>
                   Submit
                 </button>
               </form>

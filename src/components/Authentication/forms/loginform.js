@@ -58,27 +58,27 @@ const LoginForm = () => {
       <Formik initialValues={{ emaillogin: '', passwordlogin: '' }} onSubmit={handleSubmit}>
         {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <label htmlFor='emaillogin'>username or email:</label>
+            <label htmlFor="emaillogin">username or email:</label>
             <input
               className={styles.form_input}
-              type='email'
-              name='emaillogin'
-              id='emaillogin'
+              type="email"
+              name="emaillogin"
+              id="emaillogin"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.emaillogin}
             />
-            <label htmlFor='passwordlogin'>password:</label>
+            <label htmlFor="passwordlogin">password:</label>
             <input
               className={styles.form_input}
-              type='password'
-              name='passwordlogin'
-              id='passwordlogin'
+              type="password"
+              name="passwordlogin"
+              id="passwordlogin"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.passwordlogin}
             />
-            <button type='submit' className={styles.form_button} disabled={isSubmitting}>
+            <button type="submit" className={styles.form_button} disabled={isSubmitting}>
               Submit
             </button>
           </form>

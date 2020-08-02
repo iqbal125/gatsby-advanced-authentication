@@ -121,9 +121,6 @@ const Auth = () => {
         </>
       )}
       <h3>{resMessage}</h3>
-      {!forgot && context.firebase && (
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={context.firebase.auth()} />
-      )}
       {isSignIn && !forgot && (
         <>
           <LoginForm />
@@ -152,6 +149,9 @@ const Auth = () => {
             Back to login
           </small>
         </>
+      )}
+      {!forgot && context.firebase && (
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={context.firebase.auth()} />
       )}
     </div>
   );
