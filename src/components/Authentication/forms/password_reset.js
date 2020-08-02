@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import styles from './authform.module.css';
+import styles from './styles/loginform.module.css';
 import axios from 'axios';
 import * as Yup from 'yup';
 import { navigate } from 'gatsby';

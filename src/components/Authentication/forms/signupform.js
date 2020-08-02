@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Formik } from 'formik';
-import styles from './authform.module.css';
+import styles from './styles/loginform.module.css';
 import axios from 'axios';
 import * as Yup from 'yup';
 import jwt_decode from 'jwt-decode';
@@ -77,11 +77,11 @@ const SignUpForm = () => {
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <label htmlFor='username'>username:</label>
+            <label htmlFor="username">username:</label>
             <input
               className={styles.form_input}
-              name='username'
-              id='username'
+              name="username"
+              id="username"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.username}
@@ -89,12 +89,12 @@ const SignUpForm = () => {
             {errors.username && touched.username && (
               <span className={styles.error_text}>{errors.username}</span>
             )}
-            <label htmlFor='email'>email:</label>
+            <label htmlFor="email">email:</label>
             <input
               className={styles.form_input}
-              type='email'
-              name='email'
-              id='email'
+              type="email"
+              name="email"
+              id="email"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
@@ -102,12 +102,12 @@ const SignUpForm = () => {
             {errors.email && touched.email && (
               <span className={styles.error_text}>{errors.email}</span>
             )}
-            <label htmlFor='email'>password:</label>
+            <label htmlFor="email">password:</label>
             <input
               className={styles.form_input}
-              type='password'
-              name='password'
-              id='password'
+              type="password"
+              name="password"
+              id="password"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
@@ -115,7 +115,7 @@ const SignUpForm = () => {
             {errors.password && touched.password && (
               <span className={styles.error_text}>{errors.password}</span>
             )}
-            <button type='submit' className={styles.form_button} disabled={isSubmitting}>
+            <button type="submit" className={styles.form_button} disabled={isSubmitting}>
               Submit
             </button>
           </form>

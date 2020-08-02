@@ -1,8 +1,12 @@
 .forgot_password {
   text-decoration: underline;
   cursor: pointer;
+  color: blue;
 }
 
 .form_container {
-  width: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
 }

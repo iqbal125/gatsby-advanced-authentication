@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Formik } from 'formik';
-import styles from './authform.module.css';
+import styles from './styles/loginform.module.css';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import AuthContext from '../../../utils/auth_context';
@@ -47,7 +47,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
+    <div className={styles.form_wrap}>
       {loading && (
         <>
           <div className={styles.loader}></div>

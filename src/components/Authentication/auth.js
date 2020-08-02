@@ -114,6 +114,7 @@ const Auth = () => {
 
   return (
     <div className={styles.form_container}>
+      <h1>Login or Sign-Up</h1>
       {loading && (
         <>
           <div className={styles.loader}></div>
