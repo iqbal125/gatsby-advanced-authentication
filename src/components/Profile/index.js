@@ -7,6 +7,7 @@ const Profile = () => {
   return (
     <div>
       <h1>Welcome: {state.user.username} </h1>
+      <h2> This is a private Authenticated Page</h2>
     </div>
   );
 };

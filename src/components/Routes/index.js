@@ -8,7 +8,6 @@ import Auth from '../Authentication/auth';
 
 const Routes = () => {
   const context = useContext(AuthContext);
-  console.log(context);
 
   //check token expires time on private routes
   const isTokenValid = () => {
