@@ -115,7 +115,7 @@ const SignUpForm = () => {
             {errors.password && touched.password && (
               <span className={styles.error_text}>{errors.password}</span>
             )}
-            <button type="submit" className={styles.form_button} disabled={isSubmitting}>
+            <button type="submit" className={styles.submit_button} disabled={isSubmitting}>
               Submit
             </button>
           </form>

@@ -10,3 +10,9 @@
   align-items: center;
   padding: 1em;
 }
+
+.after_section {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}

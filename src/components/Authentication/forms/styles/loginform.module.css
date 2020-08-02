@@ -1,5 +1,4 @@
 .form_wrap {
-  margin-bottom: 2em;
 }
 
 .form {
@@ -12,6 +11,7 @@
   padding: 0.5em;
   margin-bottom: 1em;
   margin-top: 1em;
+  border-radius: 1em;
 }
 
 .form_button {
@@ -22,6 +22,20 @@
   color: red;
   font-size: 0.9em;
   margin-bottom: 1em;
+}
+
+.submit_button {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  align-self: center;
+  padding: 1em 1.3em 1em 1.3em;
+  background-color: blue;
+  color: white;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 1em;
+  cursor: pointer;
 }
 
 .loader {

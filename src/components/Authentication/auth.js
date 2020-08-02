@@ -114,7 +114,6 @@ const Auth = () => {
 
   return (
     <div className={styles.form_container}>
-      <h1>Login or Sign-Up</h1>
       {loading && (
         <>
           <div className={styles.loader}></div>
@@ -125,20 +124,20 @@ const Auth = () => {
       {isSignIn && !forgot && (
         <>
           <LoginForm />
-          <div>
-            Dont have an Account? &nbsp;
+          <div className={styles.after_section}>
+            <div>Dont have an Account? &nbsp;</div>
             <button onClick={() => setSignIn(false)}>SignUp</button>
+            <small onClick={() => setForgot(true)} className={styles.forgot_password}>
+              Forgot Password?
+            </small>
           </div>
-          <small onClick={() => setForgot(true)} className={styles.forgot_password}>
-            Forgot Password?
-          </small>
         </>
       )}
       {!isSignIn && !forgot && (
         <>
           <SignUpForm />
-          <div>
-            Already have an Account? &nbsp;
+          <div className={styles.after_section}>
+            <div>Already have an Account? &nbsp;</div>
             <button onClick={() => setSignIn(true)}>Login</button>
           </div>
         </>
@@ -146,9 +145,11 @@ const Auth = () => {
       {forgot && (
         <>
           <PasswordForgot />
-          <small onClick={() => setForgot(false)} className={styles.forgot_password}>
-            Back to login
-          </small>
+          <div className={styles.after_section}>
+            <small onClick={() => setForgot(false)} className={styles.forgot_password}>
+              Back to login
+            </small>
+          </div>
         </>
       )}
       {!forgot && context.firebase && (

@@ -54,7 +54,7 @@ const LoginForm = () => {
           <div className={styles.loading_background}></div>
         </>
       )}
-      <h3>{resMessage}</h3>
+      {!resMessage ? <h3>Login or Sign-Up</h3> : <h3>{resMessage}</h3>}
       <Formik initialValues={{ emaillogin: '', passwordlogin: '' }} onSubmit={handleSubmit}>
         {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
@@ -78,8 +78,8 @@ const LoginForm = () => {
               onBlur={handleBlur}
               value={values.passwordlogin}
             />
-            <button type="submit" className={styles.form_button} disabled={isSubmitting}>
-              Submit
+            <button type="submit" className={styles.submit_button} disabled={isSubmitting}>
+              Login
             </button>
           </form>
         )}
