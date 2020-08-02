@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from '../Footer';
 
-import styles from './layout.module.css';
 import SEO from '../SEO';
 
 const Layout = ({ title, description, children }) => {
@@ -13,10 +12,8 @@ const Layout = ({ title, description, children }) => {
   return (
     <>
       <SEO seoData={seoData} />
-      <div className={styles.layout}>
-        <main>{children}</main>
-        <Footer />
-      </div>
+      <main>{children}</main>
+      <Footer />
     </>
   );
 };
