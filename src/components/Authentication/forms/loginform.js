@@ -54,11 +54,11 @@ const LoginForm = () => {
           <div className={styles.loading_background}></div>
         </>
       )}
-      {!resMessage ? <h3>Login or Sign-Up</h3> : <h3>{resMessage}</h3>}
+      {!resMessage ? <h3>Login</h3> : <h3>{resMessage}</h3>}
       <Formik initialValues={{ emaillogin: '', passwordlogin: '' }} onSubmit={handleSubmit}>
         {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <label htmlFor="emaillogin">username or email:</label>
+            <label htmlFor="emaillogin">Username or Email:</label>
             <input
               className={styles.form_input}
               type="email"
@@ -68,7 +68,7 @@ const LoginForm = () => {
               onBlur={handleBlur}
               value={values.emaillogin}
             />
-            <label htmlFor="passwordlogin">password:</label>
+            <label htmlFor="passwordlogin">Password:</label>
             <input
               className={styles.form_input}
               type="password"

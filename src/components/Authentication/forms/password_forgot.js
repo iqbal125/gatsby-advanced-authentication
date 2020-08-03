@@ -43,14 +43,13 @@ const PasswordForgot = () => {
 
   return (
     <div>
-      <h3>{resMessage}</h3>
+      {!resMessage ? <h3>Forgot Password</h3> : <h3>{resMessage}</h3>}
       {!successRes && (
         <>
-          <h3> Forgot Password </h3>
           <Formik initialValues={{ emailforgot: '' }} onSubmit={handleSubmit}>
             {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
-                <label htmlFor="emailforgot">email:</label>
+                <label htmlFor="emailforgot">Email:</label>
                 <input
                   className={styles.form_input}
                   name="emailforgot"
@@ -59,7 +58,7 @@ const PasswordForgot = () => {
                   onBlur={handleBlur}
                   value={values.emailforgot}
                 />
-                <button type="submit" className={styles.form_button} disabled={isSubmitting}>
+                <button type="submit" className={styles.submit_button} disabled={isSubmitting}>
                   Submit
                 </button>
               </form>

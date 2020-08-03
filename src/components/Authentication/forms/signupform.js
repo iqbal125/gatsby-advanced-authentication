@@ -69,7 +69,7 @@ const SignUpForm = () => {
           <div className={styles.loading_background}></div>
         </>
       )}
-      <h3>{resMessage}</h3>
+      {!resMessage ? <h3>Sign-Up</h3> : <h3>{resMessage}</h3>}
       <Formik
         initialValues={{ email: '', password: '', username: '' }}
         validationSchema={SignupSchema}

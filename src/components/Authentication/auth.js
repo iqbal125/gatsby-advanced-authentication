@@ -126,7 +126,9 @@ const Auth = () => {
           <LoginForm />
           <div className={styles.after_section}>
             <div>Dont have an Account? &nbsp;</div>
-            <button onClick={() => setSignIn(false)}>SignUp</button>
+            <button className={styles.alt_button} onClick={() => setSignIn(false)}>
+              SignUp
+            </button>
             <small onClick={() => setForgot(true)} className={styles.forgot_password}>
               Forgot Password?
             </small>
@@ -138,7 +140,9 @@ const Auth = () => {
           <SignUpForm />
           <div className={styles.after_section}>
             <div>Already have an Account? &nbsp;</div>
-            <button onClick={() => setSignIn(true)}>Login</button>
+            <button className={styles.alt_button} onClick={() => setSignIn(true)}>
+              Login
+            </button>
           </div>
         </>
       )}

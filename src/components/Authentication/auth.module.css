@@ -2,6 +2,7 @@
   text-decoration: underline;
   cursor: pointer;
   color: blue;
+  text-align: center;
 }
 
 .form_container {
@@ -15,4 +16,19 @@
   padding: 1em;
   display: flex;
   flex-direction: column;
+  margin: 1em;
+}
+
+.alt_button {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  align-self: center;
+  border: none;
+  padding: 0.8em 1.3em 0.8em 1.3em;
+  background-color: blue;
+  color: white;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
 }
