@@ -49,7 +49,7 @@ const PasswordReset = props => {
   };
 
   return (
-    <div>
+    <div className={styles.container_reset}>
       {!resMessage ? <h3>Login</h3> : <h3>{resMessage}</h3>}
       <Formik
         initialValues={{ emailreset: '', passwordreset: '', passwordconfirm: '' }}

@@ -12,6 +12,10 @@
   padding: 1em;
 }
 
+.hidden_forgot {
+  margin-bottom: 6em;
+}
+
 .after_section {
   padding: 1em;
   display: flex;

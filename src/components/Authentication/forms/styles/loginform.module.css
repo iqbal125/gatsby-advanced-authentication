@@ -5,6 +5,11 @@ h3 {
   text-align: center;
 }
 
+.container_reset {
+  padding: 1em;
+  margin-bottom: 7em;
+}
+
 .form {
   display: flex;
   flex-direction: column;

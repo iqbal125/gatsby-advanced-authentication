@@ -153,6 +153,7 @@ const Auth = () => {
             <small onClick={() => setForgot(false)} className={styles.forgot_password}>
               Back to Login
             </small>
+            <div className={styles.hidden_forgot}></div>
           </div>
         </>
       )}
