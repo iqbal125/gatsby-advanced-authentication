@@ -55,7 +55,7 @@ const Auth = () => {
   const sendProfiletoDB = data => {
     setLoading(true);
     axios
-      .post('http://localhost:3000/autho2signup', data)
+      .post(`${process.env.GATSBY_SERVER_URL}/autho2signup`, data)
       .then(res => handleAuthres(res))
       .catch(err => handleAuthErr(err));
   };

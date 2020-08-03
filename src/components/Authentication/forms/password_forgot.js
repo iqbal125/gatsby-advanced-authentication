@@ -35,7 +35,7 @@ const PasswordForgot = () => {
     };
 
     axios
-      .post('http://localhost:3000/forgot', data)
+      .post(`${process.env.GATSBY_SERVER_URL}/forgot`, data)
       .then(res => handleAuthRes(res))
       .catch(err => handleAuthErr(err));
   };

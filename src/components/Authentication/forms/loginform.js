@@ -41,7 +41,7 @@ const LoginForm = () => {
     };
 
     axios
-      .post('http://localhost:3000/login', data)
+      .post(`${process.env.GATSBY_SERVER_URL}/login`, data)
       .then(res => handleAuthRes(res))
       .catch(err => handleAuthErr(err));
   };

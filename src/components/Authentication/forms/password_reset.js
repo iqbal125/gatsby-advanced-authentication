@@ -43,7 +43,7 @@ const PasswordReset = props => {
     };
 
     axios
-      .post('http://localhost:3000/password_reset', data)
+      .post(`${process.env.GATSBY_SERVER_URL}/password_reset`, data)
       .then(res => handleAuthRes(res))
       .catch(err => handleAuthErr(err));
   };

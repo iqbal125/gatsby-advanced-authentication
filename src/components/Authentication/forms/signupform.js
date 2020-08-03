@@ -56,7 +56,7 @@ const SignUpForm = () => {
     };
 
     axios
-      .post('http://localhost:3000/signup', data)
+      .post(`${process.env.GATSBY_SERVER_URL}/signup`, data)
       .then(res => handleAuthRes(res))
       .catch(err => handleAuthErr(err));
   };
