@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgoldenrodyellow;
+  opacity: 90%;
+  height: 100vh;
+}
+
+.logout_button {
+  margin: 1em;
+  padding: 1em 2em 1em 2em;
+  background-color: orangered;
+  color: white;
+  border: none;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.image {
+  width: 20em;
+  height: 20em;
+  margin-top: 3em;
+  padding: 1em;
+}
