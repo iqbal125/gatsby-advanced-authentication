@@ -29,7 +29,9 @@ const PasswordReset = props => {
     let handleAuthRes = res => {
       if (res.data) {
         setresMessage(res.data);
-        setTimeout(() => navigate('/app/login'), 400);
+        if (res.data === 'Password Successfully Reset') {
+          setTimeout(() => navigate('/app/login'), 700);
+        }
       } else {
         setresMessage('Reset Failed Please Try again');
       }
@@ -48,8 +50,7 @@ const PasswordReset = props => {
 
   return (
     <div>
-      <h3> Resetting Password: </h3>
-      <h4>{resMessage}</h4>
+      {!resMessage ? <h3>Login</h3> : <h3>{resMessage}</h3>}
       <Formik
         initialValues={{ emailreset: '', passwordreset: '', passwordconfirm: '' }}
         validationSchema={SignupSchema}
@@ -93,7 +94,7 @@ const PasswordReset = props => {
             {errors.passwordconfirm && touched.passwordconfirm && (
               <span className={styles.error_text}>{errors.passwordconfirm}</span>
             )}
-            <button type="submit" className={styles.form_button} disabled={isSubmitting}>
+            <button type="submit" className={styles.submit_button} disabled={isSubmitting}>
               Submit
             </button>
           </form>

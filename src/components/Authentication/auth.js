@@ -151,7 +151,7 @@ const Auth = () => {
           <PasswordForgot />
           <div className={styles.after_section}>
             <small onClick={() => setForgot(false)} className={styles.forgot_password}>
-              Back to login
+              Back to Login
             </small>
           </div>
         </>

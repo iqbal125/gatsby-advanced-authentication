@@ -17,10 +17,9 @@ const PasswordForgot = () => {
 
     let handleAuthRes = res => {
       if (res.data) {
-        console.log(res.data);
         if (res.data !== 'Email Not Found') {
           setsuccessRes(true);
-          console.log(res.data);
+
           navigate('/app/passwordreset/' + res.data);
         } else if (res.data === 'Email Not Found') {
           setresMessage('Email Not Found');
